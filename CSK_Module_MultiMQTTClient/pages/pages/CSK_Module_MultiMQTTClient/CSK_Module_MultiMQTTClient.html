@@ -1,187 +1,1099 @@
-<layout-row id="RowLayout1">
-	<layout-column id="ColumnLayout1" style="align-items:stretch">
-		<davinci-value-display id="VD_Info"
-			label="Place your custom features here...">
-		</davinci-value-display>
-	</layout-column>
-	<layout-column id="ColumnLayout2" style="align-items: stretch">
-		<stacked-view id="SV_UserRole">
-			<stacked-pane id="SP_LoginOK" value="true">
-				<layout-row id="RowLayout5">
-					<layout-column id="ColumnLayout7" style="align-items: stretch">
-						<davinci-tabs id="Tabs_Setup" type="modern">
-							<davinci-tab id="Tab_Settings" label="Setup">
-								<layout-row id="RowLayout8">
-									<layout-column id="ColumnLayout9" style="align-items: stretch">
-										<layout-row id="RowLayout11"
-											style="justify-content: space-between; align-items: center">
-											<layout-column id="ColumnLayout33" style="align-items: stretch">
-												<davinci-value-display id="VD_SelectInstance"
-													value="Selected Instance">
+<layout-row id="RowLayout1" class="myCustomBackground_CSK_Module_MultiMQTTClient">
+    <layout-column id="ColumnLayout12" class="myCustomFrameNoColor_CSK_Module_MultiMQTTClient"
+        style="align-items: stretch">
+        <layout-row id="RowLayout124" class="myCustomSpacerVert20_CSK_Module_MultiMQTTClient"
+            style="flex-grow: 0; flex-shrink: 0">
+        </layout-row>
+        <layout-row id="RowLayout253" style="flex-grow: 0; flex-shrink: 0">
+            <layout-column id="ColumnLayout132" style="align-items: stretch">
+                <layout-row id="RowLayout01" style="align-items: baseline; flex-grow: 0; flex-shrink: 0">
+                    <davinci-value-display id="VD_Title" class="myCustomLabel_CSK_Module_MultiMQTTClient"
+                        value="MQTT Client">
+                    </davinci-value-display>
+                    <davinci-value-display id="VD_Version">
+                        <crown-edpws-binding property="value" name="CSK_MultiMQTTClient/OnNewStatusModuleVersion"
+                            update-on-resume>
+                        </crown-edpws-binding>
+                    </davinci-value-display>
+                </layout-row>
+            </layout-column>
+        </layout-row>
+        <stacked-view id="SV_FeatureSupport">
+            <stacked-pane id="SP_Supported" value="true">
+                <stacked-view id="SV_UserRole">
+                    <stacked-pane id="SP_LoginOK" value="true">
+                        <layout-row id="RowLayout5">
+                            <layout-column id="ColumnLayout127" style="align-items: stretch">
+                                <layout-row id="RowLayout227" class="myCustomMarginFirstRow_CSK_Module_MultiMQTTClient">
+                                    <layout-column id="ColumnLayout28"
+                                        class="myCustomMarginInline1Rem_CSK_Module_MultiMQTTClient"
+                                        style="align-items: stretch">
+                                        <layout-row id="RowLayout75">
+                                            <layout-column id="ColumnLayout75" style="align-items: stretch">
+                                            </layout-column>
+                                            <layout-column id="ColumnLayout76" style="align-items: stretch">
+                                                <layout-row id="RowLayout112"
+                                                    style="flex-grow: 0; flex-shrink: 0; align-items: center">
+                                                    <layout-column id="ColumnLayout223" style="align-items: stretch">
+                                                        <davinci-value-display id="VD_SelectedInstance"
+                                                            value="Instance">
+                                                        </davinci-value-display>
+                                                    </layout-column>
+                                                    <layout-column id="ColumnLayout56" style="align-items: stretch">
+                                                        <davinci-drop-down id="DD_SelectInstance">
+                                                            <crown-binding event="change"
+                                                                name="CSK_MultiMQTTClient/setSelectedInstance"
+                                                                path="param/args/instance" auto-commit
+                                                                converter="function(value) {return Number(value);}">
+                                                            </crown-binding>
+                                                            <crown-edpws-binding property="value"
+                                                                name="CSK_MultiMQTTClient/OnNewSelectedInstance"
+                                                                update-on-resume
+                                                                converter="function(value) {return value.toString();}">
+                                                            </crown-edpws-binding>
+                                                            <crown-edpws-binding property="data"
+                                                                name="CSK_MultiMQTTClient/OnNewInstanceList"
+                                                                update-on-resume converter="convertToList">
+                                                            </crown-edpws-binding>
+                                                        </davinci-drop-down>
+                                                    </layout-column>
+                                                    <layout-column id="ColumnLayout471" style="align-items: stretch">
+                                                        <layout-row id="RowLayout65"
+                                                            class="myCustomMarginTop7PX_CSK_Module_MultiMQTTClient"
+                                                            style="align-items: center; justify-content: center">
+                                                            <davinci-button id="Button_AddInstance"
+                                                                class="myCustomButton_CSK_Module_MultiMQTTClient"
+                                                                type="outline" icon-position="append" icon="content/add"
+                                                                title="Add instance">
+                                                                <span></span>
+                                                                <crown-binding event="submit"
+                                                                    name="CSK_MultiMQTTClient/addInstance" auto-commit>
+                                                                </crown-binding>
+                                                            </davinci-button>
+                                                            <davinci-button id="Button_ResetInstances"
+                                                                class="myCustomButton_CSK_Module_MultiMQTTClient"
+                                                                type="outline" icon-position="append"
+                                                                title="Reset instances to one single instance. New setup needs to be saved and restart app to clear old threads."
+                                                                icon="action/delete">
+                                                                <span></span>
+                                                                <crown-binding event="submit"
+                                                                    name="CSK_MultiMQTTClient/resetInstances"
+                                                                    auto-commit>
+                                                                </crown-binding>
+                                                            </davinci-button>
+                                                        </layout-row>
+                                                    </layout-column>
+                                                </layout-row>
+                                            </layout-column>
+                                        </layout-row>
+                                    </layout-column>
+                                    <layout-column id="ColumnLayout295"
+                                        class="myCustomBorderLeft_CSK_Module_MultiMQTTClient"
+                                        style="align-items: stretch">
+                                        <layout-row id="RowLayout46" style="align-items: baseline">
+                                            <layout-column id="ColumnLayout81" style="align-items: stretch">
+                                                <layout-row id="RowLayout245" style="align-items: center">
+                                                    <layout-column id="ColumnLayout57" style="align-items: stretch">
+                                                        <davinci-value-display id="VD_PersistentData"
+                                                            value="Persistent Data">
+                                                        </davinci-value-display>
+                                                    </layout-column>
+                                                    <layout-column id="ColumnLayout73"
+                                                        style="align-items: stretch; flex-grow: 2">
+                                                        <davinci-text-field id="TF_ParameterName" type="text"
+                                                            title="Name of the parameters within the CSK_PersistentData module to be uses for this module.">
+                                                            <crown-edpws-binding property="value"
+                                                                name="CSK_MultiMQTTClient/OnNewParameterName"
+                                                                update-on-resume>
+                                                            </crown-edpws-binding>
+                                                            <crown-binding event="change"
+                                                                name="CSK_MultiMQTTClient/setParameterName"
+                                                                path="param/args/name" auto-commit>
+                                                            </crown-binding>
+                                                            <crown-edpws-binding property="disabled"
+                                                                name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
+                                                                update-on-resume
+                                                                converter="function(value) {return !value;}">
+                                                            </crown-edpws-binding>
+                                                        </davinci-text-field>
+                                                    </layout-column>
+                                                    <layout-column id="Column_PersistentData"
+                                                        style="align-items: stretch">
+                                                        <layout-row id="RowLayout55">
+                                                            <layout-column id="ColumnLayout762"
+                                                                style="align-items: stretch">
+                                                                <layout-row id="RowLayout123"
+                                                                    class="myCustomMarginTop7PX_CSK_Module_MultiMQTTClient"
+                                                                    style="justify-content: center; align-items: center">
+                                                                    <davinci-button id="B_LoadConfig"
+                                                                        class="myCustomButton_CSK_Module_MultiMQTTClient"
+                                                                        type="outline" icon-position="append"
+                                                                        title="Load configured parameters from CSK_PersistentData module."
+                                                                        icon="action/history">
+                                                                        <span></span>
+                                                                        <crown-binding event="submit"
+                                                                            name="CSK_MultiMQTTClient/loadParameters"
+                                                                            auto-commit>
+                                                                        </crown-binding>
+                                                                        <crown-edpws-binding property="disabled"
+                                                                            name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
+                                                                            update-on-resume
+                                                                            converter="function(value) {return !value;}">
+                                                                        </crown-edpws-binding>
+                                                                    </davinci-button>
+                                                                    <davinci-button id="B_SaveConfig"
+                                                                        class="myCustomButton_CSK_Module_MultiMQTTClient"
+                                                                        type="outline" icon-position="append"
+                                                                        title="Save current configured parameters of this module within CSK_PersistentData module."
+                                                                        icon="content/save">
+                                                                        <span></span>
+                                                                        <crown-binding event="submit"
+                                                                            name="CSK_MultiMQTTClient/sendParameters"
+                                                                            auto-commit>
+                                                                        </crown-binding>
+                                                                        <crown-edpws-binding property="disabled"
+                                                                            name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
+                                                                            update-on-resume
+                                                                            converter="function(value) {return !value;}">
+                                                                        </crown-edpws-binding>
+                                                                    </davinci-button>
+                                                                </layout-row>
+                                                            </layout-column>
+                                                        </layout-row>
+                                                    </layout-column>
+                                                </layout-row>
+                                                <layout-row id="RowLayout57" style="align-items: center">
+                                                    <layout-column id="ColumnLayout575" style="align-items: stretch">
+                                                        <davinci-collapse id="Collapse_PersistentData"
+                                                            class="myCustomPersistentDataMargin_CSK_Module_MultiMQTTClient"
+                                                            collapsed-title="..." expanded-title="...">
+                                                            <layout-row id="RowLayout45"
+                                                                class="myCustomPersistentDataMarginBack_CSK_Module_MultiMQTTClient"
+                                                                style="align-items: center">
+                                                                <layout-column id="ColumnLayout6123"
+                                                                    style="align-items: stretch">
+                                                                </layout-column>
+                                                                <layout-column id="ColumnLayout72"
+                                                                    style="align-items: stretch; flex-grow: 2">
+                                                                    <layout-row id="RowLayout122">
+                                                                        <layout-column id="ColumnLayout156"
+                                                                            style="align-items: stretch">
+                                                                            <layout-row id="RowLayout2321"
+                                                                                style="align-items: center">
+                                                                                <davinci-value-display
+                                                                                    id="VD_LoadConfig"
+                                                                                    value="Load on reboot:"
+                                                                                    title="Load configured parameters from CSK_PersistentData on app start.">
+                                                                                </davinci-value-display>
+                                                                                <davinci-checkbox id="CB_LoadConfig"
+                                                                                    title="Load configured parameters from CSK_PersistentData on app start.">
+                                                                                    <span></span>
+                                                                                    <crown-edpws-binding
+                                                                                        property="checked"
+                                                                                        name="CSK_MultiMQTTClient/OnNewStatusLoadParameterOnReboot"
+                                                                                        update-on-resume>
+                                                                                    </crown-edpws-binding>
+                                                                                    <crown-edpws-binding
+                                                                                        property="disabled"
+                                                                                        name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
+                                                                                        update-on-resume
+                                                                                        converter="function(value) {return !value;}">
+                                                                                    </crown-edpws-binding>
+                                                                                    <crown-binding event="change"
+                                                                                        name="CSK_MultiMQTTClient/setLoadOnReboot"
+                                                                                        path="param/args/status"
+                                                                                        auto-commit>
+                                                                                    </crown-binding>
+                                                                                </davinci-checkbox>
+                                                                            </layout-row>
+                                                                        </layout-column>
+                                                                        <layout-column id="ColumnLayout77"
+                                                                            style="align-items: stretch">
+                                                                        </layout-column>
+                                                                    </layout-row>
+                                                                </layout-column>
+                                                                <layout-column id="ColumnLayout79"
+                                                                    style="align-items: stretch">
+                                                                </layout-column>
+                                                            </layout-row>
+                                                        </davinci-collapse>
+                                                    </layout-column>
+                                                </layout-row>
+                                            </layout-column>
+                                        </layout-row>
+                                    </layout-column>
+                                </layout-row>
+                                <layout-row id="RowLayout607" class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient"
+                                    style="flex-grow: 0; flex-shrink: 0">
+                                </layout-row>
+                                <layout-row id="RowLayout476" class="myCustomBorderBottom_CSK_Module_MultiMQTTClient"
+                                    style="flex-grow: 0; flex-shrink: 0">
+                                </layout-row>
+                                <layout-row id="RowLayout61" class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient"
+                                    style="flex-grow: 0; flex-shrink: 0">
+                                </layout-row>
+                                <layout-row id="RowLayout2">
+                                    <layout-column id="ColumnLayout3"
+                                        class="myCustomMarginInline1Rem_CSK_Module_MultiMQTTClient"
+                                        style="align-items: stretch">
+                                        <davinci-value-display id="VD_LogMessages" value="Messages">
+                                        </davinci-value-display>
+                                        <davinci-text-area id="TA_Logs" style="height: 500px; flex-grow: 1">
+                                            <crown-edpws-binding property="value" name="CSK_MultiMQTTClient/OnNewLog"
+                                                update-on-resume>
+                                            </crown-edpws-binding>
+                                        </davinci-text-area>
+                                    </layout-column>
+                                    <layout-column id="ColumnLayout4"
+                                        class="myCustomBorderLeft_CSK_Module_MultiMQTTClient"
+                                        style="align-items: stretch">
+                                        <davinci-tabs id="Tabs_Setup_Publish_Subscription"
+                                            class="myCustomMarginLeft15PX_CSK_Module_MultiMQTTClient" type="modern">
+											<davinci-tab id="Tab_Setup"
+												class="myCustomMarginLeft7PX_CSK_Module_MultiMQTTClient"
+												icon="action/settings" title="Broker Configuration">
+												<layout-row id="RowLayout3">
+												<layout-column id="ColumnLayout13"
+													class="myCustomFrame_CSK_Module_MultiMQTTClient"
+													style="align-items: stretch">
+												<davinci-value-display id="VD_ConnectionSetup"
+													class="myCustomFrameLabel_CSK_Module_MultiMQTTClient"
+													label="Broker Configuration" style="align-self: flex-start">
 												</davinci-value-display>
-											</layout-column>
-											<layout-column id="ColumnLayout22" style="align-items: stretch">
-												<davinci-drop-down id="DD_SelectInstance">
-												<crown-binding event="change"
-													name="CSK_MultiMQTTClient/setSelectedInstance"
-													path="param/args/instance" auto-commit
-													converter="function(value) {return Number(value);}">
-												</crown-binding>
-												<crown-edpws-binding property="value"
-													name="CSK_MultiMQTTClient/OnNewSelectedInstance" update-on-resume
-													converter="function(value) {return value.toString();}">
-												</crown-edpws-binding>
-												<crown-edpws-binding property="data"
-													name="CSK_MultiMQTTClient/OnNewInstanceList" update-on-resume
-													converter="convertToList">
-												</crown-edpws-binding>
-												</davinci-drop-down>
-											</layout-column>
-										</layout-row>
-										<layout-row id="RowLayout10" style="align-items: center">
-											<layout-column id="ColumnLayout10" style="align-items: stretch">
-												<davinci-value-display id="VD_RegisteredEvent"
-													value="Registered event:">
-												</davinci-value-display>
-											</layout-column>
-											<layout-column id="ColumnLayout11" style="align-items: stretch">
-												<davinci-text-field id="TF_RegisteredEvent" type="text"
-													placeholder="e.g. CSK_ImagePlayer.OnNewImage">
-												<crown-edpws-binding property="value"
-													name="CSK_MultiMQTTClient/OnNewStatusRegisteredEvent" update-on-resume>
-												</crown-edpws-binding>
-												<crown-binding event="change" name="CSK_MultiMQTTClient/setRegisterEvent"
-													path="param/args/event" auto-commit>
-												</crown-binding>
-												</davinci-text-field>
-											</layout-column>
-										</layout-row>
-										<layout-row id="RowLayout9">
-											<layout-column id="Column_PersistentData"
-												class="myCustomFrame_CSK_Module_MultiMQTTClient"
-												style="align-items: stretch">
-												<layout-row id="RowLayout4"
+												<davinci-tabs id="Tabs_Configs" type="modern">
+												<davinci-tab id="Tab_General" label="General">
+												<layout-row id="RowLayout54">
+												<layout-column id="ColumnLayout53" style="align-items: stretch">
+												<layout-row id="RowLayout14"
 													style="justify-content: space-between; align-items: center">
-												<layout-column id="ColumnLayout5" style="align-items: stretch">
-												<davinci-value-display id="VD_ParameterName" value="Parameter name:"
-													title="Name of the parameters within the CSK_PersistentData module to be uses for this module.">
+												<layout-column id="ColumnLayout262" style="align-items: stretch">
+												<davinci-value-display id="VD_Connect" value="Activate connection:">
 												</davinci-value-display>
 												</layout-column>
-												<layout-column id="ColumnLayout6" style="align-items: stretch">
-												<davinci-text-field id="TF_ParameterName" type="text"
-													title="Name of the parameters within the CSK_PersistentData module to be uses for this module.">
-												<crown-edpws-binding property="value"
-													name="CSK_MultiMQTTClient/OnNewParameterName" update-on-resume>
+												<layout-column id="ColumnLayout115" style="align-items: stretch">
+												<layout-row id="RowLayout16"
+													style="align-items: center; justify-content: flex-end">
+												<davinci-status-indicator id="SI_Connected">
+												<span></span>
+												<crown-edpws-binding property="status"
+													name="CSK_MultiMQTTClient/OnNewStatusCurrentlyConnected"
+													update-on-resume>
 												</crown-edpws-binding>
-												<crown-binding event="change" name="CSK_MultiMQTTClient/setParameterName"
-													path="param/args/name" auto-commit>
+												</davinci-status-indicator>
+												<davinci-toggle-switch id="TS_Connect">
+												<crown-binding event="change" name="CSK_MultiMQTTClient/connectMQTT"
+													path="param/args/status" auto-commit>
 												</crown-binding>
-												<crown-edpws-binding property="disabled"
-													name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
-													update-on-resume converter="function(value) {return !value;}">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusActivateConnection"
+													update-on-resume>
 												</crown-edpws-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout8"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout14" style="align-items: stretch">
+												<davinci-value-display id="VD_BrokerURL" value="Broker URL:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout18" style="align-items: stretch">
+												<davinci-text-field id="TF_BrokerURL" type="text">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewBrokerIP" update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change" name="CSK_MultiMQTTClient/setBrokerIP"
+													path="param/args/ip" auto-commit>
+												</crown-binding>
 												</davinci-text-field>
 												</layout-column>
 												</layout-row>
-												<layout-row id="RowLayout2"
-													style="justify-content: space-between; align-items: center">
-												<davinci-value-display id="VD_LoadConfig"
-													value="Load config on app start:"
-													title="Load configured parameters from CSK_PersistentData on app start.">
+												<layout-row id="RowLayout12"
+													style="align-items: center; justify-content: space-between">
+												<layout-column id="ColumnLayout19" style="align-items: stretch">
+												<davinci-value-display id="VD_BrokerPort" value="MQTT Port:">
 												</davinci-value-display>
-												<davinci-checkbox id="CB_LoadConfig"
-													title="Load configured parameters from CSK_PersistentData on app start.">
-												<span></span>
+												</layout-column>
+												<layout-column id="ColumnLayout21" style="align-items: stretch">
+												<davinci-numeric-field id="NF_Port" type="outline"
+													min="-9007199254740991" max="9007199254740991" ticks="1"
+													group-separator="," decimal-separator="." format-pattern="0">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewMQTTPort" update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change" name="CSK_MultiMQTTClient/setMQTTPort"
+													path="param/args/port" auto-commit>
+												</crown-binding>
+												</davinci-numeric-field>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout21"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout29"
+													style="align-items: stretch; justify-content: center">
+												<davinci-value-display id="VD_Interface" value="Interface:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout30"
+													style="align-items: stretch; justify-content: center">
+												<davinci-drop-down id="DD_Interfaces">
+												<crown-edpws-binding property="data"
+													name="CSK_MultiMQTTClient/OnNewStatusInterfaceList"
+													update-on-resume converter="convertToList">
+												</crown-edpws-binding>
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusInterface" update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change" name="CSK_MultiMQTTClient/setInterface"
+													path="param/args/interface" auto-commit>
+												</crown-binding>
+												</davinci-drop-down>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout23"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout33" style="align-items: stretch">
+												<davinci-value-display id="VD_ClientId" value="Client ID:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout34" style="align-items: stretch">
+												<davinci-text-field id="TF_ClientId" type="text">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusClientID" update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change" name="CSK_MultiMQTTClient/setClientID"
+													path="param/args/id" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout204"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout27" style="align-items: stretch">
+												<davinci-value-display id="VD_ConnectionTimeout"
+													value="Connection timeout [ms]:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout286" style="align-items: stretch">
+												<davinci-numeric-field id="NF_ConnectionTimeout" type="outline"
+													min="-9007199254740991" max="9007199254740991" ticks="1"
+													group-separator="," decimal-separator="." format-pattern="0">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusConnectionTimeout"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setConnectionTimeout"
+													path="param/args/time" auto-commit>
+												</crown-binding>
+												</davinci-numeric-field>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout248"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout35" style="align-items: stretch">
+												<davinci-value-display id="VD_KeepAlive"
+													value="KeepAlive interval [s]:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout36" style="align-items: stretch">
+												<davinci-numeric-field id="NF_KeepAlive" type="outline"
+													min="-9007199254740991" max="9007199254740991" ticks="1"
+													group-separator="," decimal-separator="." format-pattern="0">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusKeepAliveInterval"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setKeepAliveInterval"
+													path="param/args/time" auto-commit>
+												</crown-binding>
+												</davinci-numeric-field>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout33" style="justify-content: space-between">
+												<layout-column id="ColumnLayout46" style="align-items: stretch">
+												<davinci-value-display id="VD_CleanSession" value="Clean Session:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout47" style="align-items: stretch">
+												<layout-row id="RowLayout347" style="justify-content: flex-end">
+												<davinci-toggle-switch id="TS_CleanSession">
 												<crown-edpws-binding property="checked"
-													name="CSK_MultiMQTTClient/OnNewStatusLoadParameterOnReboot"
+													name="CSK_MultiMQTTClient/OnNewStatusCleanSession"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setCleanSession"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<layout-row id="Placeholder4"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout15"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout22" style="align-items: stretch">
+												<davinci-value-display id="VD_ForwardMessages"
+													value="Forward received messages:"
+													title="Select if received messages of subscribed topics should be forwarded via 'CSK_MultiMQTTClient.OnReceive'-event">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout23" style="align-items: stretch">
+												<layout-row id="RowLayout195" style="justify-content: flex-end">
+												<davinci-toggle-switch id="TS_ForwardMessages"
+													title="Select if received messages of subscribed topics should be forwarded via 'CSK_MultiMQTTClient.OnReceive'-event">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusForwardReceivedMsg"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setForwardReceivedMessages"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout36"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												</davinci-tab>
+												<davinci-tab id="Tab_Security" label="Security">
+												<layout-row id="RowLayout7">
+												<layout-column id="ColumnLayout63" style="align-items: stretch">
+												<layout-row id="RowLayout43"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout37" style="align-items: stretch">
+												<davinci-value-display id="VD_Credentials" value=""
+													label="Credentials active:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout38" style="align-items: stretch">
+												<layout-row id="RowLayout27" style="justify-content: flex-end">
+												<davinci-toggle-switch id="TS_Credentials">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusUseCredentials"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setUseCredentials"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout26"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout39" style="align-items: stretch">
+												<davinci-text-field id="TF_Username" type="text"
+													placeholder="username" label="User">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusUsername" update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change" name="CSK_MultiMQTTClient/setUsername"
+													path="param/args/username" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												</layout-column>
+												<layout-column id="ColumnLayout40" style="align-items: stretch">
+												<davinci-text-field id="TF_Password" type="password"
+													placeholder="password" label="Password">
+												<crown-binding event="change" name="CSK_MultiMQTTClient/setPassword"
+													path="param/args/password" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												</layout-column>
+												</layout-row>
+												<layout-row id="Placeholder8"
+													class="myCustomBorderBottom_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout29"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout38"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout50" style="align-items: stretch">
+												<davinci-value-display id="VD_ClientCertificate" value=""
+													label="Client Certificate active:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout51" style="align-items: stretch">
+												<layout-row id="RowLayout37" style="justify-content: flex-end">
+												<davinci-toggle-switch id="TS_ClientCertificate">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusClientCertificateActive"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setUseClientCertificate"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<davinci-text-field id="TF_CertificatePath" type="text"
+													label="Path to certifcate">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusClientCertificatePath"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setClientCertificatePath"
+													path="param/args/path" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												<davinci-text-field id="TF_CertificateKeyFile" type="text"
+													label="Path to certificate key">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewstatusClientCertificateKeyPath"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setClientCertificateKeyPath"
+													path="param/args/path" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												<davinci-text-field id="TF_CertificateKeyPassword" type="password"
+													label="Password of certificate key (optional)"
+													title="Per default empty">
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setClientCertificateKeyPassword"
+													path="param/args/password" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												<layout-row id="Placeholder7"
+													class="myCustomBorderBottom_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout39"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout40"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout54" style="align-items: stretch">
+												<davinci-value-display id="VD_CABundle" value=""
+													label="Server certificate authority (CA) bundle:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout55" style="align-items: stretch">
+												<layout-row id="RowLayout41" style="justify-content: flex-end">
+												<davinci-toggle-switch id="TS_CABundle">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusCABundleActive"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setUseCABundle" path="param/args/status"
+													auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<davinci-text-field id="TF_CABundlePath" type="text">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusCABundlePath"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setCABundlePath" path="param/args/path"
+													auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												<layout-row id="Placeholder6"
+													class="myCustomBorderBottom_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout32"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout44"
+													style="align-items: stretch; justify-content: center">
+												<davinci-value-display id="VD_TLS" value="TLS version:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout45"
+													style="align-items: stretch; justify-content: center">
+												<davinci-drop-down id="DD_TLSVersion">
+												<davinci-option id="Option_NoTLS" value="NO_TLS">
+												<span>NO TLS</span>
+												</davinci-option>
+												<davinci-option id="Option_TLS1" value="TLS_V10">
+												<span>TLS 1.0</span>
+												</davinci-option>
+												<davinci-option id="Option_TLS11" value="TLS_V11">
+												<span>TLS 1.1</span>
+												</davinci-option>
+												<davinci-option id="Option_TLS12" value="TLS_V12">
+												<span>TLS 1.2</span>
+												</davinci-option>
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusTLS" update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change" name="CSK_MultiMQTTClient/setTLSVersion"
+													path="param/args/version" auto-commit>
+												</crown-binding>
+												</davinci-drop-down>
+												</layout-column>
+												</layout-row>
+												<layout-row id="Placeholder1"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout35"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout48" style="align-items: stretch">
+												<davinci-value-display id="VD_PeerVerification"
+													value="Peer verification:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout49" style="align-items: stretch">
+												<layout-row id="RowLayout42" style="justify-content: flex-end">
+												<davinci-toggle-switch id="TS_PeerVerification">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusPeerVerification"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setPeerVerification"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<layout-row id="Placeholder10"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout22"
+													style="justify-content: space-between; align-items: center">
+												<layout-column id="ColumnLayout31" style="align-items: stretch">
+												<davinci-value-display id="VD_HostnameVerification"
+													value="Hostname verification:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout32" style="align-items: stretch">
+												<layout-row id="RowLayout28" style="justify-content: flex-end">
+												<davinci-toggle-switch id="TS_HostnameVerification">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusHostnameVerification"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setHostnameVerification"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												<layout-row id="Placeholder11"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												</davinci-tab>
+												</davinci-tabs>
+												</layout-column>
+												</layout-row>
+											</davinci-tab>
+											<davinci-tab id="Tab_Publish"
+												class="myCustomMarginLeft7PX_CSK_Module_MultiMQTTClient"
+												icon="content/send" title="Publish">
+												<layout-row id="RowLayout4">
+												<layout-column id="ColumnLayout60"
+													class="myCustomFrame_CSK_Module_MultiMQTTClient"
+													style="align-items: stretch">
+												<davinci-value-display id="VD_Publish"
+													class="myCustomFrameLabel_CSK_Module_MultiMQTTClient"
+													label="Publish" style="align-self: flex-start">
+												</davinci-value-display>
+												<layout-row id="RowLayout13">
+												<layout-column id="ColumnLayout173"
+													style="align-items: stretch; flex-grow: 3">
+												<davinci-text-field id="TF_PublishTopic" type="text" label="Topic">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusPublishTopic"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/presetPublishTopic"
+													path="param/args/topic" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												<davinci-drop-down id="DD_PublishQos" label="QoS">
+												<davinci-option id="Option1" value="QOS0">
+												<span>QOS0</span>
+												</davinci-option>
+												<davinci-option id="Option2" value="QOS1">
+												<span>QOS1</span>
+												</davinci-option>
+												<davinci-option id="Option3" value="QOS2">
+												<span>QOS2</span>
+												</davinci-option>
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusPublishQOS" update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/presetPublishQOS" path="param/args/qos"
+													auto-commit>
+												</crown-binding>
+												</davinci-drop-down>
+												</layout-column>
+												<layout-column id="ColumnLayout20"
+													style="align-items: stretch; flex-grow: 3">
+												<davinci-text-field id="TF_PublishData" type="text" label="Data">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusPublishData"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/presetPublishData"
+													path="param/args/data" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												<davinci-drop-down id="DD_PublishRetain" label="Retain">
+												<davinci-option id="Option4" value="NO_RETAIN">
+												<span>NO_RETAIN</span>
+												</davinci-option>
+												<davinci-option id="Option5" value="RETAIN">
+												<span>RETAIN</span>
+												</davinci-option>
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusPublishRetain"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/presetPublishRetain"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-drop-down>
+												</layout-column>
+												<layout-column id="ColumnLayout5" style="align-items: center">
+												<davinci-button id="Button_Publish"
+													class="myCustomButton_CSK_Module_MultiMQTTClient" type="outline"
+													icon-position="append" title="Publish with preset values..."
+													icon="content/send">
+												<span></span>
+												<crown-binding event="submit" name="CSK_MultiMQTTClient/publishViaUI"
+													auto-commit>
+												</crown-binding>
+												</davinci-button>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout50"
+													class="myCustomBorderBottom_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout25"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<davinci-collapse id="Collapse_WillMessage"
+													collapsed-title="Show Will Message" expanded-title="Hide">
+												<layout-row id="RowLayout44">
+												<layout-column id="ColumnLayout42" style="align-items: stretch">
+												<layout-row id="RowLayout59" style="align-items: center">
+												<layout-column id="ColumnLayout65"
+													style="align-items: stretch; flex-grow: 6">
+												<davinci-value-display id="VD_WillMessage" value=""
+													label="WillMessage active">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout66" style="align-items: center">
+												<davinci-toggle-switch id="TS_WillMessage">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusWillMessageActive"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/setWillMessageActivation"
+													path="param/args/status" auto-commit>
+												</crown-binding>
+												</davinci-toggle-switch>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout31"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout60" style="align-items: center">
+												<layout-column id="ColumnLayout67"
+													style="align-items: stretch; flex-grow: 6">
+												<davinci-value-display id="VD_SendWillMessageByClosing"
+													value="Disconnect with WillMessage:">
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout68" style="align-items: center">
+												<davinci-toggle-switch id="TS_WillMessageOnDisconnect">
+												<crown-edpws-binding property="checked"
+													name="CSK_MultiMQTTClient/OnNewStatusDisconnectWithWillMessage"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-set event="change"
+													crown-function="CSK_MultiMQTTClient/setDisconnectWithWillMessage"
+													protocol="crownMSGPACK" crown-path="status">
+												</crown-set>
+												<crown-edpws-binding property="disabled"
+													name="CSK_MultiMQTTClient/OnNewStatusWillMessageActive"
+													update-on-resume converter="function(value) {return !value;}">
+												</crown-edpws-binding>
+												</davinci-toggle-switch>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout62" style="align-items: center">
+												<layout-column id="ColumnLayout69"
+													style="align-items: stretch; flex-grow: 6">
+												<davinci-value-display id="VD_WillMessageConfig">
+												<crown-on property="value"
+													crown-event="CSK_MultiMQTTClient/OnNewStatusWillMessageConfig">
+												</crown-on>
+												</davinci-value-display>
+												</layout-column>
+												<layout-column id="ColumnLayout70" style="align-items: center">
+												<davinci-button id="Button_SetWillMessage"
+													class="myCustomButton_CSK_Module_MultiMQTTClient" type="outline"
+													icon-position="append" icon="communication/message"
+													title="Set current setup as WillMessage">
+												<span></span>
+												<crown-binding event="submit"
+													name="CSK_MultiMQTTClient/setWillMessageConfigViaUI" auto-commit>
+												</crown-binding>
+												</davinci-button>
+												</layout-column>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												</davinci-collapse>
+												<layout-row id="RowLayout9"
+													class="myCustomBorderBottom_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout30"
+													class="myCustomSpacerVert10_CSK_Module_MultiMQTTClient">
+												</layout-row>
+												<layout-row id="RowLayout17">
+												<layout-column id="ColumnLayout26" style="align-items: stretch">
+												<curie-callout id="DC_FlowConfigInfo" type="info"
+													value="FlowConfig priority active.">
+												<crown-edpws-binding property="hidden"
+													name="CSK_MultiMQTTClient/OnNewStatusFlowConfigPriority"
+													update-on-resume converter="function(value) {return !value;}">
+												</crown-edpws-binding>
+												</curie-callout>
+												<layout-row id="RowLayout51">
+												<layout-column id="ColumnLayout6"
+													style="align-items: stretch; flex-grow: 6">
+												<davinci-text-field id="TF_PublishEventname" type="text"
+													label="Event to register"
+													placeholder="e.g. CSK_Modulename.OnNewResult">
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/presetPublishEvent"
+													path="param/args/name" auto-commit>
+												</crown-binding>
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusPublishEventName"
 													update-on-resume>
 												</crown-edpws-binding>
 												<crown-edpws-binding property="disabled"
-													name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
-													update-on-resume converter="function(value) {return !value;}">
+													name="CSK_MultiMQTTClient/OnNewStatusFlowConfigPriority"
+													update-on-resume>
 												</crown-edpws-binding>
-												<crown-binding event="change" name="CSK_MultiMQTTClient/setLoadOnReboot"
-													path="param/args/status" auto-commit>
-												</crown-binding>
-												</davinci-checkbox>
-												</layout-row>
-												<layout-row id="RowLayout3">
-												<layout-column id="ColumnLayout3" style="align-items: stretch">
-												<davinci-button id="B_LoadConfig" type="primary"
-													icon-position="append"
-													title="Load configured parameters from CSK_PersistentData module.">
-												<span>Load Config</span>
-												<crown-binding event="submit" name="CSK_MultiMQTTClient/loadParameters"
-													auto-commit>
-												</crown-binding>
-												<crown-edpws-binding property="disabled"
-													name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
-													update-on-resume converter="function(value) {return !value;}">
-												</crown-edpws-binding>
-												</davinci-button>
+												</davinci-text-field>
 												</layout-column>
-												<layout-column id="ColumnLayout4" style="align-items: stretch">
-												<davinci-button id="B_SaveConfig" type="primary"
+												<layout-column id="ColumnLayout7" style="align-items: center">
+												<davinci-button id="Button_AddEvent"
+													class="myCustomButton_CSK_Module_MultiMQTTClient" type="outline"
 													icon-position="append"
-													title="Save current configured parameters of this module within CSK_PersistentData module.">
-												<span>Save Config</span>
-												<crown-binding event="submit" name="CSK_MultiMQTTClient/sendParameters"
-													auto-commit>
+													title="Add event with above preset configuration (topic, QoS, Retain) to listen to and to forward content via MQTT publish."
+													icon="content/add">
+												<span></span>
+												<crown-binding event="submit"
+													name="CSK_MultiMQTTClient/addPublishEventViaUI" auto-commit>
 												</crown-binding>
 												<crown-edpws-binding property="disabled"
-													name="CSK_MultiMQTTClient/OnPersistentDataModuleAvailable"
-													update-on-resume converter="function(value) {return !value;}">
+													name="CSK_MultiMQTTClient/OnNewStatusFlowConfigPriority"
+													update-on-resume>
 												</crown-edpws-binding>
 												</davinci-button>
 												</layout-column>
 												</layout-row>
-											</layout-column>
-										</layout-row>
-									</layout-column>
-								</layout-row>
-							</davinci-tab>
-							<davinci-tab id="Tab_Instances" label="Instances">
-								<layout-row id="RowLayout7">
-									<layout-column id="ColumnLayout8" style="align-items: stretch">
-										<davinci-button id="Button_AddInstance" type="primary"
-											icon-position="append">
-											<span>Add instance</span>
-											<crown-binding event="submit" name="CSK_MultiMQTTClient/addInstance"
-												auto-commit>
-											</crown-binding>
-										</davinci-button>
-										<davinci-button id="Button_ResetInstances" type="primary"
-											icon-position="append"
-											title="Reset insances to single instance. Reload app after reseting.">
-											<span>Reset instances</span>
-											<crown-binding event="submit" name="CSK_MultiMQTTClient/resetInstances"
-												auto-commit>
-											</crown-binding>
-										</davinci-button>
-									</layout-column>
-								</layout-row>
-							</davinci-tab>
-						</davinci-tabs>
-					</layout-column>
-				</layout-row>
-			</stacked-pane>
-			<stacked-pane id="SP_LoginNOK" value="false">
-				<layout-row id="RowLayout6">
-					<davinci-callout id="Callout1" type="info">
-						<span>Please log in via UserManagement module.</span>
-					</davinci-callout>
-				</layout-row>
-			</stacked-pane>
-			<crown-edpws-binding property="value"
-				name="CSK_MultiMQTTClient/OnUserLevelOperatorActive" update-on-resume
-				converter="function(value) {return value.toString();}">
-			</crown-edpws-binding>
-		</stacked-view>
-		<stacked-view id="SV_PageCalled">
-			<crown-binding property="value" name="CSK_MultiMQTTClient/pageCalled"
-				path="result/data/empty" auto-update="0" update-on-resume>
-			</crown-binding>
-		</stacked-view>
-	</layout-column>
-  
+												<layout-row id="RowLayout184">
+												<layout-column id="ColumnLayout24"
+													style="align-items: stretch; flex-grow: 6">
+												<curie-table id="DT_PublishEvents" selectable>
+												<curie-table-column id="DTC_Event" header="Event">
+												</curie-table-column>
+												<curie-table-column id="DTC_PublishTopic" header="Topic">
+												</curie-table-column>
+												<curie-table-column id="DTC_PublishQos" header="QoS">
+												</curie-table-column>
+												<curie-table-column id="DTC_PublishRetain" header="Retain">
+												</curie-table-column>
+												<crown-edpws-binding property="data"
+													name="CSK_MultiMQTTClient/OnNewStatusPublishEventList"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="row-selected"
+													name="CSK_MultiMQTTClient/selectPublishEvent"
+													path="param/args/selection" auto-commit>
+												</crown-binding>
+												</curie-table>
+												</layout-column>
+												<layout-column id="ColumnLayout25" style="align-items: center">
+												<davinci-button id="Button_RemoveEvent"
+													class="myCustomButton_CSK_Module_MultiMQTTClient" type="outline"
+													icon-position="append" title="Remove selected event"
+													icon="action/delete">
+												<span></span>
+												<crown-binding event="submit"
+													name="CSK_MultiMQTTClient/removePublishEventViaUI" auto-commit>
+												</crown-binding>
+												<crown-edpws-binding property="disabled"
+													name="CSK_MultiMQTTClient/OnNewStatusFlowConfigPriority"
+													update-on-resume>
+												</crown-edpws-binding>
+												</davinci-button>
+												</layout-column>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+											</davinci-tab>
+											<davinci-tab id="Tab_Subscriptions"
+												class="myCustomMarginLeft7PX_CSK_Module_MultiMQTTClient"
+												icon="communication/mail_outline" title="Subscriptions">
+												<layout-row id="RowLayout47">
+												<layout-column id="ColumnLayout61"
+													class="myCustomFrame_CSK_Module_MultiMQTTClient"
+													style="align-items: stretch">
+												<davinci-value-display id="VD_Subscription"
+													class="myCustomFrameLabel_CSK_Module_MultiMQTTClient"
+													label="Subscriptions" style="align-self: flex-start">
+												</davinci-value-display>
+												<layout-row id="RowLayout436">
+												<layout-column id="ColumnLayout8"
+													style="align-items: stretch; flex-grow: 6">
+												<layout-row id="RowLayout11">
+												<layout-column id="ColumnLayout9" style="align-items: stretch">
+												<davinci-text-field id="TF_SubscribeTopic" type="text" label="Topic">
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusSubscriptionTopic"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/presetSubscriptionTopic"
+													path="param/args/topic" auto-commit>
+												</crown-binding>
+												</davinci-text-field>
+												</layout-column>
+												<layout-column id="ColumnLayout105" style="align-items: stretch">
+												<davinci-drop-down id="DD_SubscripeQos" label="QoS">
+												<davinci-option id="Option_QOS0" value="QOS0">
+												<span>QOS0</span>
+												</davinci-option>
+												<davinci-option id="Option_QOS1" value="QOS1">
+												<span>QOS1</span>
+												</davinci-option>
+												<davinci-option id="Option_QOS2" value="QOS2">
+												<span>QOS2</span>
+												</davinci-option>
+												<crown-edpws-binding property="value"
+													name="CSK_MultiMQTTClient/OnNewStatusSubscriptionQOS"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="change"
+													name="CSK_MultiMQTTClient/presetSubscriptionQOS"
+													path="param/args/qos" auto-commit>
+												</crown-binding>
+												</davinci-drop-down>
+												</layout-column>
+												</layout-row>
+												</layout-column>
+												<layout-column id="ColumnLayout15" style="align-items: center">
+												<davinci-button id="Button_AddSubscription"
+													class="myCustomButton_CSK_Module_MultiMQTTClient" type="outline"
+													icon-position="append" title="Add Subscription"
+													icon="content/add">
+												<span></span>
+												<crown-binding event="submit"
+													name="CSK_MultiMQTTClient/addSubscriptionViaUI" auto-commit>
+												</crown-binding>
+												</davinci-button>
+												</layout-column>
+												</layout-row>
+												<layout-row id="RowLayout53">
+												<layout-column id="ColumnLayout16"
+													style="align-items: stretch; flex-grow: 6">
+												<curie-table id="DT_Subscriptions" selectable>
+												<curie-table-column id="DTC_SubTopic" header="Topic">
+												</curie-table-column>
+												<curie-table-column id="DTC_SubQos" header="QoS">
+												</curie-table-column>
+												<crown-edpws-binding property="data"
+													name="CSK_MultiMQTTClient/OnNewStatusSubscriptionList"
+													update-on-resume>
+												</crown-edpws-binding>
+												<crown-binding event="row-selected"
+													name="CSK_MultiMQTTClient/selectSubscriptionViaUI"
+													path="param/args/selection" auto-commit>
+												</crown-binding>
+												</curie-table>
+												</layout-column>
+												<layout-column id="ColumnLayout52" style="align-items: center">
+												<davinci-button id="Button_UnSubscribe"
+													class="myCustomButton_CSK_Module_MultiMQTTClient" type="outline"
+													icon-position="append" icon="action/delete" title="Unsubscribe">
+												<span></span>
+												<crown-binding event="submit"
+													name="CSK_MultiMQTTClient/unsubscribeViaUI" auto-commit>
+												</crown-binding>
+												</davinci-button>
+												</layout-column>
+												</layout-row>
+												</layout-column>
+												</layout-row>
+											</davinci-tab>
+                                        </davinci-tabs>
+                                    </layout-column>
+                                </layout-row>
+                            </layout-column>
+                        </layout-row>
+                    </stacked-pane>
+                    <stacked-pane id="SP_LoginNOK" value="false">
+                        <layout-row id="RowLayout6">
+                            <davinci-callout id="Callout1" type="info">
+                                <span>Please log in via UserManagement module.</span>
+                            </davinci-callout>
+                        </layout-row>
+                    </stacked-pane>
+                    <crown-edpws-binding property="value" name="CSK_MultiMQTTClient/OnUserLevelOperatorActive"
+                        update-on-resume converter="function(value) {return value.toString();}">
+                    </crown-edpws-binding>
+                </stacked-view>
+            </stacked-pane>
+            <stacked-pane id="SP_NoSupport" value="false">
+                <layout-row id="RowLayout19">
+                    <layout-column id="ColumnLayout17">
+                        <davinci-callout id="Callout31" type="warning" style="width: 99%">
+                            <span>Module is not supported on this device...</span>
+                        </davinci-callout>
+                        <img id="UI_sample"
+							src="assets/CSK_Module_MultiMQTTClient/UI_sample.png"
+							alt="UI sample">
+                    </layout-column>
+                </layout-row>
+            </stacked-pane>
+            <crown-edpws-binding property="value" name="CSK_MultiMQTTClient/OnNewStatusModuleIsActive" update-on-resume
+                converter="function(value) {return value.toString();}">
+            </crown-edpws-binding>
+        </stacked-view>
+        <stacked-view id="SV_PageCalled">
+            <crown-binding property="value" name="CSK_MultiMQTTClient/pageCalled" path="result/data/empty"
+                auto-update="0" update-on-resume>
+            </crown-binding>
+        </stacked-view>
+    </layout-column>
 </layout-row>

@@ -22,8 +22,6 @@
 
 ---@diagnostic disable: undefined-global, redundant-parameter, missing-parameter
 
--- 
--- CreationTemplateVersion: 3.6.0
 --**************************************************************************
 --**********************Start Global Scope *********************************
 --**************************************************************************
@@ -31,13 +29,13 @@
 -- If app property "LuaLoadAllEngineAPI" is FALSE, use this to load and check for required APIs
 -- This can improve performance of garbage collection
 
--- _G.availableAPIs = require('Communication/MultiMQTTClient/helper/checkAPIs') -- can be used to adjust function scope of the module related on available APIs of the device
+_G.availableAPIs = require('Communication/MultiMQTTClient/helper/checkAPIs') -- can be used to adjust function scope of the module related on available APIs of the device
 -----------------------------------------------------------
 -- Logger
 _G.logger = Log.SharedLogger.create('ModuleLogger')
 _G.logHandle = Log.Handler.create()
 _G.logHandle:attachToSharedLogger('ModuleLogger')
-_G.logHandle:setConsoleSinkEnabled(false) --> Set to TRUE if CSK_Logger is not used
+_G.logHandle:setConsoleSinkEnabled(false) --> Set to TRUE if CSK_Logger module is not used
 _G.logHandle:setLevel("ALL")
 _G.logHandle:applyConfig()
 -----------------------------------------------------------
@@ -47,43 +45,23 @@ _G.logHandle:applyConfig()
 local multiMQTTClient_Model = require('Communication/MultiMQTTClient/MultiMQTTClient_Model')
 
 local multiMQTTClient_Instances = {} -- Handle all instances
-table.insert(multiMQTTClient_Instances, multiMQTTClient_Model.create(1)) -- Create at least 1 instance
 
 -- Load script to communicate with the MultiMQTTClient_Model UI
 -- Check / edit this script to see/edit functions which communicate with the UI
 local multiMQTTClientController = require('Communication/MultiMQTTClient/MultiMQTTClient_Controller')
-multiMQTTClientController.setMultiMQTTClient_Instances_Handle(multiMQTTClient_Instances) -- share handle of instances
+
+if _G.availableAPIs.default and _G.availableAPIs.specific then
+  table.insert(multiMQTTClient_Instances, multiMQTTClient_Model.create(1)) -- Create at least 1 instance
+  multiMQTTClientController.setMultiMQTTClient_Instances_Handle(multiMQTTClient_Instances) -- share handle of instances
+else
+  _G.logger:warning("CSK_MultiColorSelection: Relevant CROWN(s) not available on device. Module is not supported...")
+end
 
 --**************************************************************************
 --**********************End Global Scope ***********************************
 --**************************************************************************
 --**********************Start Function Scope *******************************
 --**************************************************************************
-
---[[
---- Function to show how this module could be used
-local function startProcessing()
-
-  CSK_MultiMQTTClient.setSelectedInstance(1) --> select instance of module
-  CSK_MultiMQTTClient.doSomething() --> preparation
-
-  -- Option A --> prepare an event to trigger processing via this one
-  --Script.serveEvent("CSK_MultiMQTTClient.OnNewTestEvent", "MultiMQTTClient_OnNewTestEvent") --> Create event to listen to and process forwarded object
-  --CSK_MultiMQTTClient.setRegisterEvent('CSK_MultiMQTTClient.OnNewTestEvent') --> Register processing to the event
-
-  --Script.notifyEvent('OnNewTestEvent', data)
-
-    -- Option B --> trigger processing via function call
-    local result = CSK_MultiMQTTClient.processSomething(data)
-
-  end
-end
-
--- Call processing function after persistent data was loaded
---Script.register("CSK_MultiMQTTClient.OnDataLoadedOnReboot", startProcessing)
-]]
-
---OR
 
 --- Function to react on startup event of the app
 local function main()
@@ -97,9 +75,41 @@ local function main()
   --       If so, the app will trigger the "OnDataLoadedOnReboot" event if ready after loading parameters
   --
   -- Can be used e.g. like this
-  ----------------------------------------------------------------------------------------
+  --[[
 
-  --startProcessing() --> see above
+  CSK_MultiMQTTClient.setSelectedInstance(1)
+  CSK_MultiMQTTClient.setBrokerIP('192.168.0.202')
+  CSK_MultiMQTTClient.setMQTTPort(1883)
+  CSK_MultiMQTTClient.connectMQTT(true)
+
+  CSK_MultiMQTTClient.presetSubscriptionTopic('test/topic')
+  CSK_MultiMQTTClient.presetSubscriptionQOS('QOS0')
+  CSK_MultiMQTTClient.addSubscriptionViaUI()
+  -- OR
+  CSK_MultiMQTTClient.addSubscription('test/topic', 'QOS0')
+
+  --------------------------------------------------------
+
+  CSK_MultiMQTTClient.presetPublishTopic('test/topic')
+  CSK_MultiMQTTClient.presetPublishQOS('QOS0')
+  CSK_MultiMQTTClient.presetPublishRetain('NO_RETAIN')
+
+  CSK_MultiMQTTClient.presetPublishData("Hello")
+  CSK_MultiMQTTClient.publishViaUI()
+  -- OR
+  CSK_MultiMQTTClient.publish('test/topic', "Hello", 'QOS0', 'NO_RETAIN')
+
+  --------------------------------------------------------
+
+  CSK_MultiMQTTClient.presetPublishEvent('CSK_OtherModule.OnNewResult')
+  CSK_MultiMQTTClient.addPublishEventViaUI()
+  -- OR
+  CSK_MultiMQTTClient.addPublishEvent('CSK_OtherModule.OnNewResult', 'test/topic', 'QOS0', 'NO_RETAIN')
+]]
+  --------------------------------------------------------
+  if _G.availableAPIs.default and _G.availableAPIs.specific then
+    CSK_MultiMQTTClient.setSelectedInstance(1)
+  end
   CSK_MultiMQTTClient.pageCalled() -- Update UI
 
 end

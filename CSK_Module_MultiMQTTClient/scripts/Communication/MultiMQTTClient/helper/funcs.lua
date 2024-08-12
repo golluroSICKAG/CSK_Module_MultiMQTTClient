@@ -18,7 +18,7 @@ funcs.json = require('Communication/MultiMQTTClient/helper/Json')
 --**************************************************************************
 
 --- Function to create a list with numbers
----@param size int Size of the list
+---@param size number Size of the list
 ---@return string list List of numbers
 local function createStringListBySize(size)
   local list = "["
@@ -116,8 +116,8 @@ funcs.createContentList = createContentList
 ---@return string sortedTable Sorted entries as JSON string
 local function createJsonList(data)
   local sortedTable = {}
-  for key, _ in pairs(data) do
-    table.insert(sortedTable, key)
+  for key, value in pairs(data) do
+    table.insert(sortedTable, value)
   end
   table.sort(sortedTable)
   return funcs.json.encode(sortedTable)
@@ -141,6 +141,75 @@ local function createStringListBySimpleTable(content)
   return list
 end
 funcs.createStringListBySimpleTable = createStringListBySimpleTable
+
+--- Function to create a json string out of 'MQTT Subscriptions' table content
+---@param content string[] Table with 'MQTT Subscriptions' data entries
+---@param selectedParam int Currently selected parameter
+---@return string jsonstring JSON string
+local function createJsonListSubscriptions(content, selectedParam)
+  local orderedTable = {}
+
+  local subscriptionList = {}
+  if content == nil then
+    subscriptionList = {{DTC_SubTopic = '-', DTC_SubQos = '-'},}
+  else
+
+    for n in pairs(content) do
+      table.insert(orderedTable, n)
+    end
+    table.sort(orderedTable)
+
+    for _, value in pairs(orderedTable) do
+      local isSelected = false
+      if value == selectedParam then
+        isSelected = true
+      end
+      table.insert(subscriptionList, {DTC_SubTopic = value, DTC_SubQos = content[value], selected = isSelected})
+    end
+
+    if #subscriptionList == 0 then
+      subscriptionList = {{DTC_SubTopic = '-', DTC_SubQos = '-'},}
+    end
+  end
+
+  local jsonstring = funcs.json.encode(subscriptionList)
+  return jsonstring
+end
+funcs.createJsonListSubscriptions = createJsonListSubscriptions
+
+--- Function to create a json string out of 'MQTT PublishEvents' table content
+---@param content string[] Table with 'MQTT PublishEvents' data entries
+---@return string jsonstring JSON string
+local function createJsonListPublishEvents(content, selectedParam)
+  local orderedTable = {}
+
+  local subscriptionList = {}
+  if content.topic == nil then
+    subscriptionList = {{DTC_Event = '-', DTC_PublishTopic = '-', DTC_PublishQos = '-', DTC_PublishRetain = '-'},}
+  else
+
+    for n in pairs(content.topic) do
+      table.insert(orderedTable, n)
+    end
+    table.sort(orderedTable)
+
+    for _, value in pairs(orderedTable) do
+      local isSelected = false
+      if value == selectedParam then
+        isSelected = true
+      end
+      table.insert(subscriptionList, {DTC_Event = value, DTC_PublishTopic = content.topic[value], DTC_PublishQos = content.qos[value], DTC_PublishRetain = content.retain[value], selected = isSelected})
+    end
+
+    if #subscriptionList == 0 then
+      subscriptionList = {{DTC_Event = '-', DTC_PublishTopic = '-', DTC_PublishQos = '-', DTC_PublishRetain = '-'},}
+    end
+  end
+
+  local jsonstring = funcs.json.encode(subscriptionList)
+  return jsonstring
+end
+funcs.createJsonListPublishEvents = createJsonListPublishEvents
 
 return funcs
 
